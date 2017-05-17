@@ -3,8 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const request = require("request");
-const cheerio = require("cheerio");
+// const request = require("request");
+// const cheerio = require("cheerio");
 
 // models dependency declarations
 
@@ -25,13 +25,16 @@ app.use(bodyParser.urlencoded({
 // Make public dir static
 app.use(express.static("./public"));
 
+// Routes
+require("./routes/api-routes.js")(app);
+
 
 
 // Configure mongoose to utilize ES6 promises
 mongoose.Promise = Promise;
 
 // Configure mongoose db
-mongoose.connect("mongodb://localhost/swnews");
+mongoose.connect("mongodb://localhost/swnews_db");
 const db = mongoose.connection;
 
 // Show any mongoose errors
@@ -44,7 +47,9 @@ db.once("open", function() {
   console.log("Successful db connection.");
 });
 
-// Listen on port 3000
+
+
+// Start server listening
 app.listen(PORT, function() {
   console.log(`App running on port ${PORT}!`);
 });
