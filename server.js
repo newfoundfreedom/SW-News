@@ -3,17 +3,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-// const request = require("request");
-// const cheerio = require("cheerio");
-
-// models dependency declarations
-
 
 
 // App initialization
 const PORT = process.env.PORT || 3333;
 const app = express();
-
 
 
 // Configure morgan and body parser
