@@ -1,0 +1,16 @@
+{
+  "name": "SW-News",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/newfoundfreedom/SW-News.git",
+  "author": "Joel Roberts <newfoundfreedom@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.9",
+    "morgan": "^1.8.1",
+    "request": "^2.81.0"
+  }
+}
