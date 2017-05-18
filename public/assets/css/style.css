@@ -3,6 +3,7 @@
     background-size: cover;
     height: 18vw;
     padding-left: 5vw;
+    margin: 0;
 }
 
 #header-title{
@@ -42,6 +43,10 @@ img {
 }
 #scrape-btn {
     margin-top: 15px;
+}
+
+.spacer {
+    height: 30px;
 }
 
 /*MEDIA QUERIES*/

@@ -111,40 +111,32 @@ module.exports = function (app) {
 
 
     // Retrieve and display scraped articles
-    app.get("/articles", function (req, res) {
+    app.get('/articles', function (req, res) {
         // Grab all articles
         Article.find({}, function (error, doc) {
             if (error) {
                 console.log(error);
             }
             else {
-                // res.json(doc);
                 res.render('index', {articles : doc})
             }
         });
     });
 
+    // Bookmark an article by setting db bookmarked value to true
+    app.post('/bookmark/:id', function (req, res) {
+        // Grab all articles
 
-    // Grab article by it's ObjectId
-    app.get("/articles/:id", function(req, res) {
-        // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-        Article.findOne({ "_id": req.params.id })
-        // ..and populate all of the notes associated with it
-            .populate("note")
-            // now, execute our query
-            .exec(function(error, doc) {
-                // Log any errors
-                if (error) {
-                    console.log(error);
-                }
-                // Otherwise, send the doc to the browser as a json object
-                else {
-                    res.json(doc);
-                }
-            });
+        Article.update({'_id': req.params.id}, {$set: {'bookmarked': true}}, function (error, doc) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.render('index', {articles : doc})
+                // res.redirect('/articles');
+            }
+        });
     });
-
-
 
 
     app.get("/", function (req, res) {
