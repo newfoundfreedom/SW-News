@@ -1,11 +1,19 @@
 .jumbotron {
     background-image: url("../img/dtbanner2.jpg");
     background-size: cover;
-    height: 20vw;
+    height: 18vw;
+    padding-left: 5vw;
+}
+
+#header-title{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 6vw;
+    line-height: 5vw;
 }
 
 .article-img {
-    height: 150px;
+    height: 100px;
 }
 
 .title {
@@ -32,3 +40,40 @@ img {
     bottom: 15px;
     right: 15px;
 }
+#scrape-btn {
+    margin-top: 15px;
+}
+
+/*MEDIA QUERIES*/
+/*!* Landscape tablets and medium desktops *!*/
+@media (min-width: 992px) {
+    .jumbotron {
+        height: 21vw;
+        padding-left: 5vw;
+    }
+}
+
+/*!* Portrait tablets and small desktops *!*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .jumbotron {
+        height: 25vw;
+        padding-left: 5vw;
+    }
+}
+
+/*!* Landscape phones and portrait tablets *!*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .jumbotron {
+        height: 28vw;
+        padding-left: 5vw;
+    }
+}
+
+/*!* Portrait phones and smaller *!*/
+@media (max-width: 480px) {
+    .jumbotron {
+        height: 28vw;
+        padding-left: 5vw;
+    }
+}
+

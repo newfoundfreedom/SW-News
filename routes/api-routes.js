@@ -49,7 +49,8 @@ module.exports = function (app) {
                 } // end if
             }); //end each
 
-            res.send('NPR Scrape Complete')
+            // res.send('NPR Scrape Complete');
+            res.redirect('/articles');
 
         });
     });
@@ -109,7 +110,7 @@ module.exports = function (app) {
 
 
 
-    // Article route - will retrieve articles scraped
+    // Retrieve and display scraped articles
     app.get("/articles", function (req, res) {
         // Grab all articles
         Article.find({}, function (error, doc) {
@@ -124,8 +125,30 @@ module.exports = function (app) {
     });
 
 
+    // Grab article by it's ObjectId
+    app.get("/articles/:id", function(req, res) {
+        // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+        Article.findOne({ "_id": req.params.id })
+        // ..and populate all of the notes associated with it
+            .populate("note")
+            // now, execute our query
+            .exec(function(error, doc) {
+                // Log any errors
+                if (error) {
+                    console.log(error);
+                }
+                // Otherwise, send the doc to the browser as a json object
+                else {
+                    res.json(doc);
+                }
+            });
+    });
+
+
+
+
     app.get("/", function (req, res) {
-        res.send('The Trump Dump - coming soon!');
+        res.render('index')
     });
 
 };

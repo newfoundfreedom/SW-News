@@ -34,7 +34,7 @@ app.set("view engine", "hbs");
 mongoose.Promise = Promise;
 
 // Configure mongoose db
-mongoose.connect("mongodb://localhost/swnews_db");
+mongoose.connect("mongodb://localhost/trumpdump_db");
 const db = mongoose.connection;
 
 // Show any mongoose errors
