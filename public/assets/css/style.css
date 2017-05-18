@@ -1,0 +1,34 @@
+.jumbotron {
+    background-image: url("../img/dtbanner2.jpg");
+    background-size: cover;
+    height: 20vw;
+}
+
+.article-img {
+    height: 150px;
+}
+
+.title {
+    display: inline;
+}
+
+img {
+    float: left;
+    margin-right: 30px;
+}
+
+.panel-body {
+    position: relative;
+}
+
+.bookmark-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.note-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
