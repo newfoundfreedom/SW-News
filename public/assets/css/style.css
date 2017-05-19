@@ -13,6 +13,10 @@
     line-height: 5vw;
 }
 
+.row {
+    border: blue 1px solid;
+}
+
 .article-img {
     height: 100px;
 }
@@ -30,7 +34,7 @@ img {
     position: relative;
 }
 
-.bookmark-btn {
+.bookmark-btn, .remove-btn {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -39,8 +43,9 @@ img {
 .note-btn {
     position: absolute;
     bottom: 15px;
-    right: 15px;
+    right: 155px;
 }
+
 #scrape-btn {
     margin-top: 15px;
 }

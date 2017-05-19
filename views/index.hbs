@@ -1,29 +1,24 @@
-<div class="spacer"> </div>
+<div class="spacer"></div>
 
 {{#each articles}}
-    {{#if this.bookmarked}}
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <a href="{{this.link}}">
-                    <img src="{{this.image}}" class="img-rounded article-img">
-                    <h3 class="title">{{this.title}}</h3>
-                </a>
-                <!--<button type="button" class="btn btn-sm btn-warning note-btn"><strong><i class=""fa fa-sticky-note"></i>&nbsp;&nbsp;Notes</strong></button>-->
-                <button type="button" class="btn btn-sm btn-success bookmark-btn" data-id="{{this._id}}"><strong><i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmarked</strong></button>
-            </div>
-        </div>
-    {{/if}}
-    {{#unless this.bookmarked}}
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <a href="{{this.link}}">
-                    <img src="{{this.image}}" class="img-rounded article-img">
-                    <h3 class="title">{{this.title}}</h3>
-                </a>
-                <!--<button type="button" class="btn btn-sm btn-warning note-btn"><strong><i class=""fa fa-sticky-note"></i>&nbsp;&nbsp;Notes</strong></button>-->
-                <button type="button" class="btn btn-sm btn-warning bookmark-btn" data-id="{{this._id}}"><strong><i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmark</strong></button>
-            </div>
-        </div>
-    {{/unless}}
-{{/each}}
 
+    <div class="panel panel-default panel-{{this._id}}">
+        <div class="panel-body">
+            <a href="{{this.link}}">
+                <img src="{{this.image}}" class="img-rounded article-img">
+                <h3 class="title">{{this.title}}</h3>
+            </a>
+
+            {{#if this.bookmarked}}
+                <button type="button" class="btn btn-sm btn-success bookmark-btn" data-id="{{this._id}}">
+                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmarked</button>
+            {{/if}}
+
+            {{#unless this.bookmarked}}
+                <button type="button" class="btn btn-sm btn-warning bookmark-btn" data-id="{{this._id}}">
+                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmark</button>
+            {{/unless}}
+
+        </div>
+    </div>
+{{/each}}

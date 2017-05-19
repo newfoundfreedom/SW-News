@@ -1,0 +1,20 @@
+<div class="spacer"></div>
+
+{{#each articles}}
+
+    <div class="panel panel-default panel-{{this._id}}">
+        <div class="panel-body">
+            <a href="{{this.link}}">
+                <img src="{{this.image}}" class="img-rounded article-img">
+                <h3 class="title">{{this.title}}</h3>
+            </a>
+
+            <button type="button" class="btn btn-sm btn-warning note-btn" data-id="{{this._id}}">
+                <i class="fa fa-sticky-note"></i>&nbsp;&nbsp;Create Note</button>
+
+            <button type="button" class="btn btn-sm btn-danger remove-btn" data-id="{{this._id}}">
+                Remove Bookmark</button>
+
+        </div>
+    </div>
+{{/each}}
