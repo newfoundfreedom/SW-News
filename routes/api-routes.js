@@ -62,7 +62,6 @@ module.exports = function (app) {
     });
 
 
-
     // // Scrape route
     // app.get('/scrape-salon', function (req, res) {
     //     // Request political section of npr news
@@ -115,7 +114,6 @@ module.exports = function (app) {
     // });
 
 
-
     // Retrieve and display ALL scraped articles
     app.get('/articles', function (req, res) {
 
@@ -124,7 +122,7 @@ module.exports = function (app) {
                 console.log(error);
             }
             else {
-                res.render('index', {articles : doc})
+                res.render('index', {articles: doc})
             }
         });
     });
@@ -139,7 +137,7 @@ module.exports = function (app) {
             }
             else {
                 // res.redirect('/articles');
-                res.render('bookmarked', {articles : doc})
+                res.render('bookmarked', {articles: doc})
             }
         });
     });
@@ -173,15 +171,12 @@ module.exports = function (app) {
     });
 
 
-    // Bookmark an article by setting db bookmarked value to true
-    app.get("/articles/:id", function(req, res) {
-        // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-        Article.findOne({ "_id": req.params.id })
-        // ..and populate all of the notes associated with it
+    // Grab all notes for selected article
+    app.get("/articles/:id", function (req, res) {
+
+        Article.findOne({"_id": req.params.id})
             .populate("note")
-            // now, execute our query
-            .exec(function(error, doc) {
-                // Log any errors
+            .exec(function (error, doc) {
                 if (error) {
                     console.log(error);
                 }
@@ -190,8 +185,5 @@ module.exports = function (app) {
                 }
             });
     });
-
-
-
 };
 

@@ -1,5 +1,5 @@
 // Package dependency declarations
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 // Create Schema class
 const Schema = mongoose.Schema;
 
@@ -24,12 +24,12 @@ const ArticleSchema = new Schema({
         type: Boolean,
         default: false,
         required: true
-    }
-    // This only saves one note's ObjectId, ref refers to the Note model
-    // note: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Note"
-    // }
+    },
+    note: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Note'
+    }]
+
 });
 
 // Create the Article model with the ArticleSchema
