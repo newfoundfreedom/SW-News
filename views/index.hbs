@@ -11,12 +11,14 @@
 
             {{#if this.bookmarked}}
                 <button type="button" class="btn btn-sm btn-success bookmark-btn" data-id="{{this._id}}">
-                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmarked</button>
+                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmarked
+                </button>
             {{/if}}
 
             {{#unless this.bookmarked}}
                 <button type="button" class="btn btn-sm btn-warning bookmark-btn" data-id="{{this._id}}">
-                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmark</button>
+                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;Bookmark
+                </button>
             {{/unless}}
 
         </div>

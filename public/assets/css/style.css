@@ -2,11 +2,11 @@
     background-image: url("../img/dtbanner2.jpg");
     background-size: cover;
     height: 18vw;
-    padding-left: 5vw;
+    padding-left: 10vw;
     margin: 0;
 }
 
-#header-title{
+#header-title {
     font-family: 'Roboto', sans-serif;
     color: white;
     font-size: 6vw;
@@ -59,7 +59,6 @@ img {
 @media (min-width: 992px) {
     .jumbotron {
         height: 21vw;
-        padding-left: 5vw;
     }
 }
 
@@ -67,7 +66,6 @@ img {
 @media (min-width: 768px) and (max-width: 991px) {
     .jumbotron {
         height: 25vw;
-        padding-left: 5vw;
     }
 }
 
@@ -75,7 +73,6 @@ img {
 @media (min-width: 481px) and (max-width: 767px) {
     .jumbotron {
         height: 28vw;
-        padding-left: 5vw;
     }
 }
 
@@ -83,7 +80,6 @@ img {
 @media (max-width: 480px) {
     .jumbotron {
         height: 28vw;
-        padding-left: 5vw;
     }
 }
 

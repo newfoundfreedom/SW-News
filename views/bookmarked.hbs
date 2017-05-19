@@ -9,11 +9,13 @@
                 <h3 class="title">{{this.title}}</h3>
             </a>
 
-            <button type="button" class="btn btn-sm btn-warning note-btn" data-id="{{this._id}}">
-                <i class="fa fa-sticky-note"></i>&nbsp;&nbsp;Create Note</button>
+            <button type="button" class="btn btn-sm btn-warning note-btn" data-id="{{this._id}}" data-toggle="modal"
+                    data-target="#noteModal"><i class="fa fa-sticky-note"></i>&nbsp;&nbsp;Article Notes
+            </button>
 
             <button type="button" class="btn btn-sm btn-danger remove-btn" data-id="{{this._id}}">
-                Remove Bookmark</button>
+                Remove Bookmark
+            </button>
 
         </div>
     </div>
