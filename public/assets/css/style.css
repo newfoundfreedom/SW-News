@@ -6,6 +6,9 @@
     margin: 0;
 }
 
+.navbar {
+    margin: 0;
+}
 #header-title {
     font-family: 'Roboto', sans-serif;
     color: white;
