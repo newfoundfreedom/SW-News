@@ -37,9 +37,9 @@ mongoose.Promise = Promise;
 
 
 // Configure mongoose db locally
-mongoose.connect("mongodb://localhost/trumpdump_db");
+// mongoose.connect("mongodb://localhost/trumpdump_db");
 // Configure mongoose db to heroku
-// mongoose.connect('mongodb://heroku_98770c82:vmtnrq2f8kjg4bkd9c6itltltl@ds147711.mlab.com:47711/heroku_98770c82');
+mongoose.connect('mongodb://heroku_98770c82:vmtnrq2f8kjg4bkd9c6itltltl@ds147711.mlab.com:47711/heroku_98770c82');
 const db = mongoose.connection;
 
 
