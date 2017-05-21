@@ -10,6 +10,10 @@
     margin: 8px;
 }
 
+.navlink {
+    color: darkblue;
+}
+
 #newNoteLabel {
     margin-top: 40px;
 }
@@ -17,6 +21,7 @@
 .navbar {
     margin: 0;
 }
+
 #header-title {
     font-family: 'Roboto', sans-serif;
     color: white;
