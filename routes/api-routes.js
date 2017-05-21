@@ -3,6 +3,7 @@ const request = require("request");
 const cheerio = require("cheerio");
 // Model dependency declarations
 var Article = require("../models/Article.js");
+var Note = require("../models/Note.js");
 
 //Routes
 module.exports = function (app) {
@@ -171,19 +172,48 @@ module.exports = function (app) {
     });
 
 
-    // Grab all notes for selected article
-    app.get("/articles/:id", function (req, res) {
+    // // Grab all notes for selected article
+    // app.get('/bookmark/:id', function (req, res) {
+    //     Article.findOne({"_id": req.params.id})
+    //         .populate("note")
+    //         .exec(function (error, doc) {
+    //             if (error) {
+    //                 console.log(error);
+    //             }
+    //             else {
+    //                 // res.render('bookmarked', {articles: doc})
+    //                 res.json(doc);
+    //                 res.render('note_modal', {data: doc})
+    //                 // console.log(`Coming from endpoint ${doc}`);
+    //             }
+    //         });
+    // });
 
-        Article.findOne({"_id": req.params.id})
-            .populate("note")
-            .exec(function (error, doc) {
-                if (error) {
-                    console.log(error);
-                }
-                else {
-                    res.json(doc);
-                }
-            });
+    app.post("/savenote/:id", function (req, res) {
+        console.log(req.body);
+        // Create a new note from captured values
+        let newNote = new Note(req.body);
+        // Save note to db
+        newNote.save(function (err, doc) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                // Use the article id to find and update it's note
+                Article.findOneAndUpdate({'_id': req.params.id}, {'note': doc._id})
+                // Execute the above query
+                    .exec(function (err, doc) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            res.send(doc);
+                        }
+                    });
+            }
+        });
     });
+
+
 };
 
