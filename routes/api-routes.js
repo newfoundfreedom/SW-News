@@ -172,22 +172,20 @@ module.exports = function (app) {
     });
 
 
-    // // Grab all notes for selected article
-    // app.get('/bookmark/:id', function (req, res) {
-    //     Article.findOne({"_id": req.params.id})
-    //         .populate("note")
-    //         .exec(function (error, doc) {
-    //             if (error) {
-    //                 console.log(error);
-    //             }
-    //             else {
-    //                 // res.render('bookmarked', {articles: doc})
-    //                 res.json(doc);
-    //                 res.render('note_modal', {data: doc})
-    //                 // console.log(`Coming from endpoint ${doc}`);
-    //             }
-    //         });
-    // });
+    // Grab all notes for selected article
+    app.get('/getnotes/:id', function (req, res) {
+        Article.findOne({"_id": req.params.id})
+            .populate("note")
+            .exec(function (error, doc) {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    res.json(doc)
+                }
+            });
+    });
+
 
     app.post("/savenote/:id", function (req, res) {
         console.log(req.body);
@@ -200,7 +198,7 @@ module.exports = function (app) {
             }
             else {
                 // Use the article id to find and update it's note
-                Article.findOneAndUpdate({'_id': req.params.id}, {'note': doc._id})
+                Article.findOneAndUpdate({'_id': req.params.id}, { $push: {'note': doc._id} })
                 // Execute the above query
                     .exec(function (err, doc) {
                         if (err) {
@@ -213,7 +211,6 @@ module.exports = function (app) {
             }
         });
     });
-
 
 };
 

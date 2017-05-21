@@ -6,6 +6,14 @@
     margin: 0;
 }
 
+.well {
+    margin: 8px;
+}
+
+#newNoteLabel {
+    margin-top: 40px;
+}
+
 .navbar {
     margin: 0;
 }

@@ -32,8 +32,19 @@ $(document).ready(function () {
     $('.note-btn').on('click', function () {
         // grab data-id value from the note button
         let id = $(this).attr('data-id');
-        // and place that value into the Article Note Modal's save button
-        $('#noteSaveButton').attr('data-id', id)
+        // and place that value into the note modal view's save button
+        $('#noteSaveButton').attr('data-id', id);
+        $.ajax({
+            method: 'GET',
+            url: `/getnotes/${id}`,
+        }).done(function(data){
+            $.each(data.note, function( i, v ) {
+                let count = i+1;
+                $('#previousNotes')
+                    .append( `<div class="well"><strong>${v.title} </strong>
+<p>${v.body}</p></div>` );
+            });
+        })
     });
 
     // Save Note
@@ -41,26 +52,41 @@ $(document).ready(function () {
     $('#noteSaveButton').on('click', function () {
         // capture the article id from the save button
         let id = $(this).attr('data-id'),
-            title = $('#note-title-input').val(),
-            body = $('#note-body-input').val();
+            title = $('#note-title-input').val().trim(),
+            body = $('#note-body-input').val().trim();
 
-        // post the note information (captured from the title and body input
-        //  fields) to the '/bookmark/:id' endpoint
-        $.ajax({
-            method: 'POST',
-            url: `/savenote/${id}`,
-            data: {
-                title: title,
-                body: body
-            }
-        })
-        // when the post route is complete
-            .done(function (data) {
-                // clear modal input fields for next note creation
-                $('#note-title-input').val('');
-                $('#note-body-input').val('');
+        // test to see if the note body field is empty
+        if(body.length > 0) {
+            // if note text is found then post the note information to the
+            //  'savenote/:id' endpoint
+            $.ajax({
+                method: 'POST',
+                url: `/savenote/${id}`,
+                data: {
+                    title: title,
+                    body: body
+                }
             })
-    })
+            // when the post route is complete
+                .done(function () {
+                    // clear modal input fields for next note creation
+                    $('#note-title-input').val('');
+                    $('#note-body-input').val('');
+                    $('#previousNotes').empty()
+                })
+        }
+        // empty out fields regardless of whether or not any new note data was saved
+        $('#note-title-input').val('');
+        $('#note-body-input').val('');
+        $('#previousNotes').empty()
+    });
 
+    // Close Note
+    // when the notes modal is closed clear all fields
+    $('#noteCloseButton').on('click', function () {
+        $('#note-title-input').val('');
+        $('#note-body-input').val('');
+        $('#previousNotes').empty()
+    });
 });
 
